@@ -110,7 +110,7 @@ def setup_sheet(sheet):
             ["Health", 120000, '=SUMIF(D2:D1000;"Health";E2:E1000)', '=I8-J8'],
             ["Unimportant", 0, '=SUMIF(D2:D1000;"Unimportant";E2:E1000)', '=I9-J9'],
             ["Reimbursement", 0, '=SUMIF(D2:D1000;"Reimbursement";E2:E1000)', '=I10-J10'],
-            ["Total", 4000000, '=SUM(E2:E15)', '=SUM(K2:K10)']
+            ["Total", 4000000, '=SUM(J2:J10)', '=SUM(K2:K10)']
         ],
         value_input_option="USER_ENTERED"
     )

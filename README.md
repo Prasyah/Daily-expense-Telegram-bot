@@ -31,9 +31,9 @@ python main.py
 - Example: `/income 500000`
 
 ### 💸 Add Expense
-- **`/exp amount category description [date]`** - Log a new expense
+- **`/exp category description amount [date]`** - Log a new expense
 - Optional date parameter (1-31) defaults to today
-- Example: `/exp 15000 Lunch Ayam 11`
+- Example: `/exp Lunch Ayam 15000 11`
 - Supported categories: Bills, Expense, Reimbursement
 - Automatically creating new sheet on first input on new month
 
@@ -42,12 +42,15 @@ python main.py
 - Example: `/edit 3 20000 Lunch Gado2`
 
 ### 🗑️ Delete Expense
-- **`/delete ID`** - Delete an expense using its ID
-- Example: `/delete 3`
+- **`/delete ID1 [ID2 ID3 ...]`** - Delete one or more expenses using their IDs
+- Example: `/delete 3` or `/delete 41 42 43`
 
 ### 📊 Budget Status
-- **`/budget`** - View remaining budget for the month
+- **`/budget`** - Display budget options as interactive buttons
+- Choose "All Categories" to see complete budget status or select a specific category
+- Shows budget, used amount, usage percentage, and remaining balance
 - Shows daily safe spending recommendations
+- Displays total budget and overall usage percentage when viewing all categories
 
 ### 📅 Daily Report
 - **`/detail`** - View all expenses for today
@@ -55,9 +58,10 @@ python main.py
 - Example: `/detail 11` (shows all expenses on the 11th)
 
 ### 📆 Monthly Report
-- **`/month month_year`** - View detailed monthly expense report
+- **`/month`** - Display the last 5 months as interactive buttons
+- Select a month to view detailed expense report
 - Shows breakdown by category (Bills, Expense, Reimbursement)
-- Example: `/month February_2026`
+- Displays usage percentage for each category compared to budget
 
 ### ℹ️ Help
 - **`/help`** - Display all available commands and usage examples

@@ -131,7 +131,7 @@ def setup_sheet(sheet):
     )
 
     # Rupiah format column Amount in expense
-    format_cell_range(sheet, "D2:D1000", rupiah_format)
+    format_cell_range(sheet, "E2:E1000", rupiah_format)
 
     # Rupiah format column Budget, Expense, Leftover in budget
     format_cell_range(sheet, "I2:I14", rupiah_format)

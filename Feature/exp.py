@@ -12,9 +12,7 @@ async def exp(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
 
         now = datetime.now(pytz.timezone(core.TIMEZONE))
 
-        amount = int(context.args[0])
-
-        category = context.args[1]
+        category = context.args[0]
 
         if category not in core.ALL_CATEGORY:
             await update.message.reply_text("Invalid category")
@@ -24,10 +22,12 @@ async def exp(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
 
         if last_arg.isdigit() and 1 <= int(last_arg) <= 31:
             day = int(last_arg)
-            description = " ".join(context.args[2:-1])
+            amount = int(context.args[-2])
+            description = " ".join(context.args[1:-2])
         else:
             day = now.day
-            description = " ".join(context.args[2:])
+            amount = int(context.args[-1])
+            description = " ".join(context.args[1:-1])
 
         date_obj = now.replace(day=day)
         date = date_obj.strftime("%Y-%m-%d")
@@ -60,7 +60,7 @@ async def exp(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception:
         await update.message.reply_text(
             "Usage:\n"
-            "/exp amount category description date(optional)\n"
+            "/exp category description amount date(optional)\n"
             "Bills: Residence, electricity\n"
             "Expense: Lunch, Snacks, Transport, Other, Unimportant, Health\n"
             "Reimbursement: Reimbursement\n"

@@ -1,4 +1,4 @@
-from telegram.ext import ApplicationBuilder, CommandHandler
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler
 
 import core
 import start as start_mod
@@ -21,8 +21,10 @@ def main():
     app.add_handler(CommandHandler("delete", delete_mod.delete))
     app.add_handler(CommandHandler("edit", edit_mod.edit))
     app.add_handler(CommandHandler("budget", budget_mod.budget))
+    app.add_handler(CallbackQueryHandler(budget_mod.budget_callback, pattern="^budget_"))
     app.add_handler(CommandHandler("detail", detail_mod.detail))
     app.add_handler(CommandHandler("month", month_mod.month))
+    app.add_handler(CallbackQueryHandler(month_mod.month_callback, pattern="^month_"))
     app.add_handler(CommandHandler("help", help_mod.help))
 
     print("Bot running")

@@ -63,7 +63,7 @@ async def month_callback(update: telegram.Update, context: ContextTypes.DEFAULT_
         if not data:
             await query.edit_message_text("No data for this month")
             return
-        
+        s
         df = pd.DataFrame(
             data,
             columns=[

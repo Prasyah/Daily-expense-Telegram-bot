@@ -48,10 +48,10 @@ Example:
 
 💸 Add Expense
 
-/exp amount category description date(optional)
+/exp category description amount date(optional)
 
 Example:
-/exp 15000 Lunch Ayam 11
+/exp Lunch Ayam 15000 11
 
 Date optional → default today
 
@@ -102,10 +102,7 @@ Example:
 
 📆 Monthly Report
 
-/month month_year
-
-Example:
-/month February_2026
+/month
 
 
 ━━━━━━━━━━━━━━━━━━

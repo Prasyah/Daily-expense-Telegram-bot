@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.env.*
+
+# Service account / keys
+daily-*.json
+
+# Virtual environments
+venv/
+env/
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Packages
+*.egg-info/
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db

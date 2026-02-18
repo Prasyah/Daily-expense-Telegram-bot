@@ -40,7 +40,17 @@ REIMBURSEMENT = [
     "Reimbursement"
 ]
 
-ALL_CATEGORY = BILLS + EXPENSE + REIMBURSEMENT
+# Reimburse categories (separate from expense categories)
+REIMBURSE_CATEGORIES = [
+    "Telkom",
+    "SF",
+    "Sat",
+    "XL",
+    "Tri",
+    "Other"
+]
+
+ALL_CATEGORY = BILLS + EXPENSE
 
 # =========================
 # GOOGLE AUTH
@@ -137,3 +147,42 @@ def setup_sheet(sheet):
     format_cell_range(sheet, "I2:I14", rupiah_format)
     format_cell_range(sheet, "J2:J11", rupiah_format)
     format_cell_range(sheet, "K2:K11", rupiah_format)
+
+    # --- Reimburse table (separate) ---
+    # Table for reimburse entries starting at column O
+    sheet.update("O1:T1", [[
+        "No",
+        "Date",
+        "Time",
+        "Category",
+        "Amount",
+        "Description"
+    ]])
+
+    # Reimburse budget block header (placed at H16 to start entries at H17)
+    sheet.update("H16:K16", [[
+        "Category",
+        "Budget",
+        "Expense",
+        "Leftover"
+    ]])
+
+    # Reimburse budget rows H17:K22 and total in H23
+    sheet.update("H17:K23",
+        [
+            ["Telkom", 300000, '=SUMIF(R2:R1000;"Telkom";S2:S1000)', '=I17-J17'],
+            ["SF", 250000, '=SUMIF(R2:R1000;"SF";S2:S1000)', '=I18-J18'],
+            ["Sat", 300000, '=SUMIF(R2:R1000;"Sat";S2:S1000)', '=I19-J19'],
+            ["XL", 300000, '=SUMIF(R2:R1000;"XL";S2:S1000)', '=I20-J20'],
+            ["Tri", 200000, '=SUMIF(R2:R1000;"Tri";S2:S1000)', '=I21-J21'],
+            ["Other", 0, '=SUMIF(R2:R1000;"Other";S2:S1000)', '=I22-J22'],
+            ["Total", '=SUM(I17:I22)', '=SUM(J17:J22)', '=SUM(K17:K22)']
+        ],
+        value_input_option="USER_ENTERED"
+    )
+
+    # Rupiah format for reimburse amount column and reimburse budget block
+    format_cell_range(sheet, "S2:S1000", rupiah_format)
+    format_cell_range(sheet, "I17:I23", rupiah_format)
+    format_cell_range(sheet, "J17:J22", rupiah_format)
+    format_cell_range(sheet, "K17:K22", rupiah_format)

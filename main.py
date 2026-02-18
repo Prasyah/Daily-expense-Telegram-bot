@@ -4,6 +4,7 @@ import core
 import start as start_mod
 from Feature import income as income_mod
 from Feature import exp as exp_mod
+from Feature import reimburse as reimburse_mod
 from Feature import delete as delete_mod
 from Feature import edit as edit_mod
 from Feature import budget as budget_mod
@@ -18,6 +19,7 @@ def main():
     app.add_handler(CommandHandler("start", start_mod.start))
     app.add_handler(CommandHandler("income", income_mod.income))
     app.add_handler(CommandHandler("exp", exp_mod.exp))
+    app.add_handler(CommandHandler("reimburse", reimburse_mod.reimburse))
     app.add_handler(CommandHandler("delete", delete_mod.delete))
     app.add_handler(CommandHandler("edit", edit_mod.edit))
     app.add_handler(CommandHandler("budget", budget_mod.budget))

@@ -27,6 +27,8 @@ async def detail(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
         ]
     )
 
+    # Clean Amount column: remove "Rp" prefix and periods (thousand separators)
+    df["Amount"] = df["Amount"].astype(str).str.replace("Rp", "").str.replace(".", "")
     df["Amount"] = pd.to_numeric(df["Amount"], errors="coerce").fillna(0)
 
     now = datetime.now(pytz.timezone(core.TIMEZONE))

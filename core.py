@@ -92,6 +92,17 @@ def get_sheet():
     return sheet
 
 
+def format_column_E(sheet):
+    """Format column E as Rupiah currency for existing sheets"""
+    rupiah_format = CellFormat(
+        numberFormat=NumberFormat(
+            type="CURRENCY",
+            pattern="Rp#,##0"
+        )
+    )
+    format_cell_range(sheet, "E2:E1000", rupiah_format)
+
+
 def setup_sheet(sheet):
     sheet.update("A1:F1", [[
         "No",
@@ -130,7 +141,7 @@ def setup_sheet(sheet):
         ["Clean Income"]
     ])
 
-    sheet.update("I14", [["=I13-J11"]], value_input_option="USER_ENTERED")
+    sheet.update("I14", [["=I13-J11-J23"]], value_input_option="USER_ENTERED")
 
     # FORMAT RUPIAH
     rupiah_format = CellFormat(
